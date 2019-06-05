@@ -1,0 +1,20 @@
+class UserBehavior(TaskSet):
+    def on_start(self):
+        self.server_address = "https://10.95.61.52"      #服务器地址
+        self.cookie = ""
+        self.timestamp = 0
+        self.localTime = 0
+        self.config_url = "/3.0/authService/config"
+        self.login_url = "/3.0/authService/login"
+        self.user_list = "/3.0/userService/userList"
+        self.login()
+
+    def login(self):
+        self.config()
+        self.login_tmp()
+
+    def saveTimestamp(self, t):
+        global timestamp
+        global localTime
+        self.timestamp = t
+        self.localTime = int(round(time.time() * 1000))
